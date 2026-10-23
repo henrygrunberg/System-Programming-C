@@ -1,0 +1,43 @@
+# Example config for tunnel.
+# Copy this file to ~/.tunnel/tunnels.conf and adjust it.
+# Comments start with '#'. Blank lines are ignored.
+#
+# Each [name] section is one tunnel. Names may contain letters, digits, '-' and '_'.
+#
+#   host   = user@server   ssh destination (required)
+#   type   = local         local (ssh -L, the default), remote (ssh -R) or dynamic (ssh -D)
+#   local  = ...           your machine's side of the tunnel
+#   remote = ...           the server's side of the tunnel
+#
+#   type = local     local = <port>               remote = <host>:<port>
+#   type = remote    local = <host>:<port>        remote = <port>
+#   type = dynamic   local = <port>               (no remote: SOCKS proxy)
+#
+# SSH keys: tunnel runs the normal ssh command, so ssh picks the key as usual
+# (~/.ssh/id_*, ssh-agent, ~/.ssh/config). To use a specific key for a host,
+# set it in ~/.ssh/config, for example:
+#
+#   Host myserver
+#       HostName myserver.example.com
+#       User user
+#       IdentityFile ~/.ssh/work_key
+#
+# Keys with a passphrase fail unless they are loaded in ssh-agent (ssh-add):
+# tunnels run in the background and ssh cannot ask for the passphrase.
+
+[db]
+host   = user@server
+type   = local
+local  = 5432
+remote = localhost:5432
+
+[expose-dev]
+host   = user@server
+type   = remote
+local  = localhost:3000
+remote = 8080
+
+[socks]
+host  = user@server
+type  = dynamic
+local = 1080

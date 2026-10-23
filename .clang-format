@@ -1,0 +1,13 @@
+BasedOnStyle: LLVM
+IndentWidth: 4
+ColumnLimit: 120
+IndentCaseLabels: true
+AllowShortCaseLabelsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AlignArrayOfStructures: Left
+BinPackArguments: true
+PointerAlignment: Right
+IncludeBlocks: Preserve
+SortIncludes: CaseSensitive
